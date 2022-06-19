@@ -9,8 +9,9 @@ export const globalStyles = StyleSheet.create({
     // backgroundColor: 'blue',
     zIndex: 1
   },
-  testText: {
-    color: '#ff0000',
+  headerText: {
+    paddingTop: 50,
+    color: '#000000',
     fontSize: 24,
     textAlign: "center"
   },

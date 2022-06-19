@@ -5,7 +5,7 @@ import { globalStyles } from "../styles/Global";
 function AboutScreen({ navigation }) {
   return (
     <View style={globalStyles.container}>
-        <Text style={globalStyles.testText}>About!!!</Text>
+        <Text style={globalStyles.headerText}>About!!!</Text>
     </View>
   )
 }
