@@ -6,11 +6,13 @@
  * @flow strict-local
  */
 
-import React, { Fragment } from "react";
+import React from "react";
 import type {Node} from 'react';
-import { SafeAreaView, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native';
 import NavStack from "./src/screens/Nav";
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
+import { store } from './src/redux/Store'
+import { Provider } from 'react-redux'
 
 const theme = {
   ...DefaultTheme,
@@ -31,7 +33,9 @@ const App: () => Node = () => {
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
       <PaperProvider theme={theme}>
-        <NavStack />
+        <Provider store={store}>
+          <NavStack />
+        </Provider>
       </PaperProvider>
     </SafeAreaView>
   );
