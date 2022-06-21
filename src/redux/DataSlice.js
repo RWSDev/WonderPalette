@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const initialState = {
     value: {},
@@ -13,6 +14,9 @@ export const DataSlice = createSlice({
             // doesn't actually mutate the state because it uses the Immer library,
             // which detects changes to a "draft state" and produces a brand new
             // immutable state based off those changes
+
+            // store data for later retrieval
+
             state.value = action.payload
         },
     },

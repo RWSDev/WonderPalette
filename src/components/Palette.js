@@ -4,6 +4,7 @@ import React from 'react'
         console.log('processing color')
         // this.state.primary = color
         let data = {}
+        data.primary = color
         data.hsl = hexToHSL(color)
         data.complimentary = complimentary(color)
         data.splitComplimentary = splitComplimentary(color)
