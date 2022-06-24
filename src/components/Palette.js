@@ -5,9 +5,11 @@ import React from 'react'
         // this.state.primary = color
         let data = {}
         data.primary = color
+        data.hex = color
+        data.rgb = hexToRGB(color)
         data.hsl = hexToHSL(color)
         data.complimentary = complimentary(color)
-        data.splitComplimentary = splitComplimentary(color)
+        data.split = splitComplimentary(color)
         data.analogous = analogous(color)
         data.triadic = triadic(color)
         data.tetradic = tetradic(color)
@@ -15,6 +17,104 @@ import React from 'react'
         data.tints = tints(color)
         data.shades = shades(color)
         return data
+    }
+
+    export function getTextColorFromColor(hsl) {
+        let h = (hsl.h > 180)? hsl.h - 180  : 180 + hsl.h
+        let s = (hsl.s > 50)? hsl.s - 50 : 50 + hsl.s
+        let l = (hsl.l > 50)? hsl.l - 50 : 50 + hsl.l
+        return HSLToHex(h, s, l)
+    }
+
+    export const hexToRGB = (color) => {
+        let r = 0, g = 0, b = 0;
+
+        // 3 digits
+        if (color.length == 4) {
+            r = "0x" + color[1] + color[1];
+            g = "0x" + color[2] + color[2];
+            b = "0x" + color[3] + color[3];
+
+            // 6 digits
+        } else if (color.length == 7) {
+            r = "0x" + color[1] + color[2];
+            g = "0x" + color[3] + color[4];
+            b = "0x" + color[5] + color[6];
+        }
+
+        return `${+r}, ${+g}, ${+b}`
+        // return "rgb("+ +r + "," + +g + "," + +b + ")";
+    }
+
+    // export const hexToRGBA = (color) => {
+    //     let r = 0, g = 0, b = 0, a = 1;
+    //
+    //     console.log(color.length)
+    //
+    //     if (color.length == 4) {
+    //         r = "0x" + color[1] + color[1];
+    //         g = "0x" + color[2] + color[2];
+    //         b = "0x" + color[3] + color[3];
+    //         a = "0x" + color[4] + color[4];
+    //
+    //     } else if (color.length == 7) {
+    //         r = "0x" + color[1] + color[2];
+    //         g = "0x" + color[3] + color[4];
+    //         b = "0x" + color[5] + color[6];
+    //         a = "0x" + color[7] + color[8];
+    //     }
+    //     a = +(a / 255).toFixed(3);
+    //     console.log(a)
+    //     return `${+r}, ${+g}, ${+b}, ${+a}`
+    //     // return "rgba(" + +r + "," + +g + "," + +b + "," + a + ")";
+    // }
+
+
+
+    export const hexToHsl = (color) => {
+        // Convert hex to RGB first
+        let r = 0, g = 0, b = 0;
+        if (color.length == 4) {
+            r = "0x" + color[1] + color[1];
+            g = "0x" + color[2] + color[2];
+            b = "0x" + color[3] + color[3];
+        } else if (color.length == 7) {
+            r = "0x" + color[1] + color[2];
+            g = "0x" + color[3] + color[4];
+            b = "0x" + color[5] + color[6];
+        }
+        // Then to HSL
+        r /= 255;
+        g /= 255;
+        b /= 255;
+        let cmin = Math.min(r,g,b),
+            cmax = Math.max(r,g,b),
+            delta = cmax - cmin,
+            h = 0,
+            s = 0,
+            l = 0;
+
+        if (delta == 0)
+            h = 0;
+        else if (cmax == r)
+            h = ((g - b) / delta) % 6;
+        else if (cmax == g)
+            h = (b - r) / delta + 2;
+        else
+            h = (r - g) / delta + 4;
+
+        h = Math.round(h * 60);
+
+        if (h < 0)
+            h += 360;
+
+        l = (cmax + cmin) / 2;
+        s = delta == 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
+        s = +(s * 100).toFixed(1);
+        l = +(l * 100).toFixed(1);
+
+        return `${h}, ${s}, ${l}`
+        // this.state.hsl = {h: h, s: s, l: l}
     }
 
     const hexToHSL = (color) => {
@@ -116,6 +216,9 @@ import React from 'react'
         }
         colorArray.push(HSLToHex(h, hsl.s, hsl.l))
         // this.state.complimentary = colorArray
+        console.log('colorArray compliment')
+        console.log(h, hsl.s, hsl.l)
+        console.log(colorArray)
         return colorArray
     }
 

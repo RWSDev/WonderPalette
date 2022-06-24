@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Icon from 'react-native-vector-icons/FontAwesome5'
-import HomeScreen from "./Home";
+import PickerScreen from "./Picker";
 import AboutScreen from "./About";
 import TopMenu from '../components/TopMenu'
 import { menuStyles } from "../styles/Menu";
@@ -29,7 +29,7 @@ function TabStack() {
                   backgroundColor: 'black'
               }
           }}>
-          <Tab.Screen name='Home' component={HomeScreen} options={{
+          <Tab.Screen name='Picker' component={PickerScreen} options={{
               tabBarLabel: 'Picker',
               tabBarIcon: ({ color, size }) => (
                   <Icon name='eye-dropper' color={color} size={size} />
