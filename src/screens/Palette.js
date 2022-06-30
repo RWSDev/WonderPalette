@@ -18,10 +18,12 @@ function PaletteScreen({ navigation }) {
     const paletteSection = useSelector((state) => state.data.paletteSection)
     const sectionColorNames = useSelector((state) => state.data.sectionColorNames)
     const bookHexColor = useSelector((state) => state.data.bookHexColor)
+    const pickColor = useSelector((state) => state.data.pickColor)
     const dispatch = useDispatch()
     const [modalVisible, setModalVisible] = useState(false);
     const [bookModalVisible, setBookModalVisible] = useState(false);
     const [colorBooks, setColorBooks] = useState([])
+    const [colorNames, setColorNames] = useState(null)
 
     const roundHSV = (color) => {
         const hsv = toHsv(color)
@@ -34,8 +36,12 @@ function PaletteScreen({ navigation }) {
         return hsvValues.join(',')
     }
 
-    const getColorNames = async () => {
-        let { primary, hsl, hex, rgb, ...cleanData } = palette
+    const getColorNames = () => {
+        console.log('==================== palette ====================')
+        console.log(palette)
+        const { primary, hsl, hex, rgb, ...cleanData } = palette
+        console.log('==================== cleanData ====================')
+        console.log(cleanData)
         Object.keys(cleanData).map((section, index) => {
             Object.keys(cleanData[section]).map(idx => {
                 useEffect(() => {
@@ -46,16 +52,17 @@ function PaletteScreen({ navigation }) {
                             if (clrNames !== null) {
                                 await dispatch(setSectionColorNames({secName: section, hexColor: cleanData[section][idx], colors: clrNames }))
                             }
+                            await console.log('==================== section color names ====================')
+                            await console.log(sectionColorNames)
                         } catch (e) {
                             console.log('======== error ==========')
                             console.log(e)
                         }
                     })();
-                },[])
+                },[navigation.isFocused()])
             })
         })
     }
-
     getColorNames()
 
     const bookButtonPressed = async (hexColor) => {
@@ -65,7 +72,8 @@ function PaletteScreen({ navigation }) {
     }
 
     const joinColorsForText = (colors, hexColor) => {
-
+        console.log('==================== colors ====================')
+        console.log(colors)
         if (colors) {
             colors = [...new Set(colors)]
         }
@@ -82,7 +90,7 @@ function PaletteScreen({ navigation }) {
                     <Icon
                         name="paint-roller"
                         color={getTextColorFromColor(hsl)}
-                        size={18}
+                        size={22}
                         style={{marginTop: -40}}
                         onPress={() => { bookButtonPressed(hexColor); setModalVisible(false); setBookModalVisible(true); }} />
                 </Fragment>
@@ -205,9 +213,7 @@ function PaletteScreen({ navigation }) {
                                                 >
                                                     <View style={[paletteStyles.diamond, {backgroundColor: hexColor}]}>
                                                     </View>
-                                                    {
-                                                        joinColorsForText(sectionColorNames[paletteSection][hexColor], hexColor)
-                                                    }
+                                                    { joinColorsForText(sectionColorNames[paletteSection][hexColor], hexColor) }
                                                 </TouchableOpacity>
                                                 <View key={100 + index} style={paletteStyles.colorDetailRowSection}>
                                                     <Text style={paletteStyles.colorDetailRowText}>HEX{'\n'} {hexColor}</Text>
@@ -226,7 +232,6 @@ function PaletteScreen({ navigation }) {
                                     })}
                                 </View>
                             </View>
-
                         </Card.Content>
                         <Card.Actions style={paletteStyles.cardActionsContainer}>
                             <Button
@@ -239,12 +244,9 @@ function PaletteScreen({ navigation }) {
                         </Card.Actions>
                     </Card>
                 </Modal>
-
-
             )
         }
     }
-
 
     const buildView = () => {
         /// clean up data object and remove unnecessary properties

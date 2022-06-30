@@ -48,10 +48,17 @@ export const DataSlice = createSlice({
             }
         },
         setSectionColorNames: (state, action) => {
-            // console.log('============ REDUX ==============')
+            console.log('============ REDUX ==============')
             const hexColor = action.payload.hexColor
             const section = action.payload.secName
             const colors = action.payload.colors
+            
+            console.log('==================== hexColor ====================')
+            console.log(hexColor)
+            console.log('==================== section ====================')
+            console.log(section)
+            console.log('==================== colors ====================')
+            console.log(colors)
 
             switch(action.payload.secName) {
                 case 'complimentary': return {

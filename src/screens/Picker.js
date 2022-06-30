@@ -7,13 +7,13 @@ import { Button } from 'react-native-paper'
 import * as RootNavigation from "../components/RootNavigation"
 import {hexToHsl, hexToRGB, processColor} from "../components/Palette"
 import { useSelector, useDispatch } from 'react-redux'
-import {setPalette, setPickColor} from '../redux/DataSlice'
+import {setPalette, setPickColor, setSectionColorNames} from '../redux/DataSlice'
 import { FormBuilder } from "react-native-paper-form-builder"
 import {useForm} from "react-hook-form"
 import {useIsFocused} from "@react-navigation/native";
 
 function HomeScreen({ navigation }) {
-
+  const palette = useSelector((state) => state.data.palette)
   const [colorBooks, setColorBooks] = useState([])
   const initialColor = '#0000ff'
   const data = useSelector((state) => state.data)
@@ -48,10 +48,10 @@ function HomeScreen({ navigation }) {
   const isFocused = useIsFocused();
   useEffect(() => {}, [isFocused]);
 
-  const procColor = (color) => {
+  const procColor = async (color) => {
     if (color.length === 7) {
       const colorData = processColor(color);
-      dispatch(setPalette(colorData));
+      await dispatch(setPalette(colorData));
       RootNavigation.navigate('Palette')
     }
   }
