@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Platform, Text, View } from "react-native";
-import { NavigationContainer } from '@react-navigation/native'
+import {NavigationContainer} from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Icon from 'react-native-vector-icons/FontAwesome5'
@@ -59,7 +59,7 @@ function TabStack() {
 const NavStack = props => {
     return (
       <NavigationContainer ref={navigationRef}>
-        {/*<View style={menuStyles.container}><TopMenu /></View>*/}
+        <View style={menuStyles.container}><TopMenu /></View>
         <TabStack />
       </NavigationContainer>
     )

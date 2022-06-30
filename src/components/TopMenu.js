@@ -3,13 +3,20 @@ import { View } from 'react-native';
 import { IconButton, Menu, Divider, Provider } from 'react-native-paper';
 import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import * as RootNavigation from "./RootNavigation"
+import { useNavigation } from '@react-navigation/native'
 
-const TopMenu = ({ navigation }) => {
+const TopMenu = () => {
+  const navigation = useNavigation()
+  let scene = 'Picker'
+  if (navigation.getCurrentRoute() !== undefined) {
+    scene = navigation.getCurrentRoute().name
+  }
   MaterialCommunityIcon.loadFont();
   const [visible, setVisible] = React.useState(false);
 
   const openMenu = () => setVisible(true);
   const closeMenu = () => setVisible(false);
+
 
   return (
     <Provider>
@@ -18,6 +25,8 @@ const TopMenu = ({ navigation }) => {
           visible={visible}
           onDismiss={closeMenu}
           anchor={<IconButton icon="dots-grid" color="white" onPress={openMenu} />}>
+          <Menu.Item title={scene} />
+          <Divider />
           <Menu.Item onPress={() => {}} title="Item 1" />
           <Menu.Item onPress={() => {closeMenu(); RootNavigation.navigate('Settings')}} title="Settings" />
           <Divider />

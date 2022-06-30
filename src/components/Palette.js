@@ -1,7 +1,6 @@
 import React from 'react'
 
     export function processColor(color) {
-        console.log('processing color')
         // this.state.primary = color
         let data = {}
         data.primary = color
@@ -20,10 +19,14 @@ import React from 'react'
     }
 
     export function getTextColorFromColor(hsl) {
-        let h = (hsl.h > 180)? hsl.h - 180  : 180 + hsl.h
-        let s = (hsl.s > 50)? hsl.s - 50 : 50 + hsl.s
-        let l = (hsl.l > 50)? hsl.l - 50 : 50 + hsl.l
-        return HSLToHex(h, s, l)
+        const color = complimentary(HSLToHex(hsl.h, hsl.s, hsl.l))
+        if (color[1] === '#ffffff') {
+            return '#000000'
+        } else if (color[1] === '#000000') {
+            return '#ffffff'
+        } else {
+            return color[1]
+        }
     }
 
     export const hexToRGB = (color) => {
@@ -215,10 +218,6 @@ import React from 'react'
             h = hsl.h + 180
         }
         colorArray.push(HSLToHex(h, hsl.s, hsl.l))
-        // this.state.complimentary = colorArray
-        console.log('colorArray compliment')
-        console.log(h, hsl.s, hsl.l)
-        console.log(colorArray)
         return colorArray
     }
 

@@ -13,6 +13,22 @@ import NavStack from "./src/screens/Nav";
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 import { store } from './src/redux/Store'
 import { Provider } from 'react-redux'
+import SQLite from 'react-native-sqlite-storage';
+// Add this code on your app.js
+SQLite.DEBUG(false);
+global.db = SQLite.openDatabase({
+      name: 'WonderPaletteDB.sqlite',
+      createFromLocation: 1,
+    },
+    () => successToOpenDb(),
+    () => failToOpenDb(),
+)
+const successToOpenDb = () => {
+  // console.log('db successfully opened')
+}
+const failToOpenDb = () => {
+  console.log('failed to open db')
+}
 
 const theme = {
   ...DefaultTheme,

@@ -45,6 +45,7 @@ export const paletteStyles = StyleSheet.create({
     },
     card: {
         // top: 50,
+        paddingTop: 20,
         borderWidth: 1,
         borderColor: '#000',
         backgroundColor: 'white',
@@ -80,14 +81,28 @@ export const paletteStyles = StyleSheet.create({
         textAlign: "center",
         fontStyle: "italic",
     },
+    legend: {
+        paddingTop: 3,
+        color: 'gray',
+        fontWeight: "bold",
+        fontSize: 8,
+        width: '75%',
+        paddingBottom: 2,
+        alignSelf: "center",
+        textAlign: "center",
+        fontStyle: "italic",
+    },
     colorDetailsContainer: {
-        marginTop: 25,
+        // marginTop: 25,
         width: '100%',
         flex: 1,
         flexDirection: 'column',
         justifyContent: 'space-evenly',
         alignSelf: "center",
         minHeight: 550,
+    },
+    colorDetailsLeft: {
+
     },
     colorDetailRowSection: {
         width: '25%',
@@ -98,5 +113,29 @@ export const paletteStyles = StyleSheet.create({
     colorDetailRowText: {
         textAlign: "center",
         fontSize: 8,
-    }
+    },
+    circle: {
+        width: 50,
+        height: 50,
+        transform: [{ rotate: "45deg" }],
+        borderWidth: 1,
+        borderColor: 'darkgray',
+        shadowColor: 'red',
+        shadowRadius: 20,
+        borderRadius: 100,
+        elevation: 20,
+        marginTop: 20,
+    },
+    diamond: {
+        width: 55,
+        height: 55,
+        transform: [{ rotate: "45deg" }],
+        borderWidth: 1,
+        borderColor: 'darkgray',
+        shadowColor: 'red',
+        shadowRadius: 20,
+        borderRadius: 0,
+        elevation: 20,
+        marginTop: 20,
+    },
 });

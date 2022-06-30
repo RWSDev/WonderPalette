@@ -22,6 +22,13 @@ export const globalStyles = StyleSheet.create({
     textAlign: "center",
     fontStyle: "italic",
   },
+  inputContainer: {
+    flex: 1,
+    maxHeight: 175,
+    width: '90%',
+    alignSelf: "center",
+    // marginBottom: 75,
+  },
   pickerButtonsContainer: {
     flex: 1,
     flexDirection: 'row',
@@ -35,11 +42,12 @@ export const globalStyles = StyleSheet.create({
     borderRadius: 10,
     width: 125,
     backgroundColor: 'lightgray',
-    borderWidth: 1,
+    borderWidth: 2,
     maxHeight: 32,
   },
   pickerButtonText: {
     fontSize: 10,
+    fontWeight: 'bold',
     textTransform: "capitalize",
   },
   primaryButton: {
