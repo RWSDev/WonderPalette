@@ -15,6 +15,7 @@
 		7699B88040F8A987B510C191 /* libPods-WonderPalette-WonderPaletteTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-WonderPalette-WonderPaletteTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		82049C7E2868DFC9005BCD2A /* www in Resources */ = {isa = PBXBuildFile; fileRef = 82049C7D2868DFC9005BCD2A /* www */; };
+		82315F0228709F1B0000E332 /* launch_screen.png in Resources */ = {isa = PBXBuildFile; fileRef = 82315F0128709F1B0000E332 /* launch_screen.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		5DCACB8F33CDC322A6C60F78 /* libPods-WonderPalette.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WonderPalette.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = WonderPalette/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		82049C7D2868DFC9005BCD2A /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; name = www; path = ../www; sourceTree = "<group>"; };
+		82315F0128709F1B0000E332 /* launch_screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch_screen.png; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-WonderPalette-WonderPaletteTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WonderPalette-WonderPaletteTests.release.xcconfig"; path = "Target Support Files/Pods-WonderPalette-WonderPaletteTests/Pods-WonderPalette-WonderPaletteTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -108,6 +110,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		82315F0328709F240000E332 /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				82315F0128709F1B0000E332 /* launch_screen.png */,
+			);
+			path = assets;
+			sourceTree = "<group>";
+		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +128,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				82315F0328709F240000E332 /* assets */,
 				82049C7D2868DFC9005BCD2A /* www */,
 				13B07FAE1A68108700A75B9A /* WonderPalette */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -247,6 +258,7 @@
 			files = (
 				82049C7E2868DFC9005BCD2A /* www in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				82315F0228709F1B0000E332 /* launch_screen.png in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

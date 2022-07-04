@@ -24,7 +24,7 @@ export const globalStyles = StyleSheet.create({
   },
   inputContainer: {
     flex: 1,
-    maxHeight: 175,
+    // maxHeight: 175,
     width: '90%',
     alignSelf: "center",
     // marginBottom: 75,

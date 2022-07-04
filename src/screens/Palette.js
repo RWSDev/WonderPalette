@@ -91,7 +91,7 @@ function PaletteScreen({ navigation }) {
                         name="paint-roller"
                         color={getTextColorFromColor(hsl)}
                         size={22}
-                        style={{marginTop: -40}}
+                        style={{top: 10, position: 'absolute'}}
                         onPress={() => { bookButtonPressed(hexColor); setModalVisible(false); setBookModalVisible(true); }} />
                 </Fragment>
             )
@@ -200,7 +200,7 @@ function PaletteScreen({ navigation }) {
                                     {Object.keys(palette[paletteSection]).map((c, index) => {
                                         const hexColor = palette[paletteSection][c]
                                         return (
-                                            <View key={index} style={{flex: 1, flexDirection: 'row', justifyContent: 'space-evenly'}}>
+                                            <View key={index} style={{flex: 1, flexDirection: 'row', justifyContent: 'space-evenly', alignItems: 'stretch' }}>
 
                                                 <TouchableOpacity
                                                     key={50 + index}

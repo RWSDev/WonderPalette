@@ -73,6 +73,24 @@ import React from 'react'
     // }
 
 
+    export const RGBToHex = (color) => {
+        const rgb = color.split(',')
+
+        r = parseInt(rgb[0]).toString(16);
+        g = parseInt(rgb[1]).toString(16);
+        b = parseInt(rgb[2]).toString(16);
+
+        if (r.length == 1)
+            r = "0" + r;
+        if (g.length == 1)
+            g = "0" + g;
+        if (b.length == 1)
+            b = "0" + b;
+
+        console.log('==================== hexstring ====================')
+        console.log("#" + r + g + b)
+        return "#" + r + g + b;
+    }
 
     export const hexToHsl = (color) => {
         // Convert hex to RGB first
@@ -166,7 +184,7 @@ import React from 'react'
         // this.state.hsl = {h: h, s: s, l: l}
     }
 
-    const HSLToHex = (h,s,l) => {
+    export const HSLToHex = (h,s,l) => {
         s /= 100;
         l /= 100;
 

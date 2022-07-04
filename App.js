@@ -47,7 +47,7 @@ const theme = {
 };
 const App: () => Node = () => {
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
+    <SafeAreaView style={{flex: 1, backgroundColor: 'black'}}>
       <PaperProvider theme={theme}>
         <Provider store={store}>
           <NavStack />
