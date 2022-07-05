@@ -1,6 +1,6 @@
 {
   "output": "CHANGELOG.md",
-  "template": "keepachangelog",
+  "template": "auto-changelog.hbs",
   "unreleased": true,
   "sortCommits": "date-desc"
 }
