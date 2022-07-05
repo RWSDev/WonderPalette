@@ -9,8 +9,8 @@
     "test": "jest",
     "lint": "eslint .",
     "bump-patch": "npm version patch && bundle exec fastlane bump",
-    "bump-minor": "npm version minor --no-git-tag-version && bundle exec fastlane bump",
-    "bump-major": "npm version major --no-git-tag-version && bundle exec fastlane bump",
+    "bump-minor": "npm version minor && bundle exec fastlane bump",
+    "bump-major": "npm version major && bundle exec fastlane bump",
     "version": "auto-changelog -p"
   },
   "auto-changelog": {

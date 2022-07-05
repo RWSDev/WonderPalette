@@ -29,14 +29,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
         {{/each}}
     {{/if}}
 
-    {{#if fixes}}
-        ### Fixed
-
-        {{#each fixes}}
-            - {{#if commit.breaking}}**Breaking change:** {{/if}}{{commit.subject}}{{#each fixes}} {{#if href}}[`#{{id}}`]({{href}}){{/if}}{{/each}}
-        {{/each}}
-    {{/if}}
-
     {{! List commits with `Breaking change: ` somewhere in the message }}
     {{#commit-list commits heading='### Breaking Changes' message='Breaking change: '}}
         - {{subject}} [`{{shorthash}}`]({{href}})
