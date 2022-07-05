@@ -1,0 +1,69 @@
+[
+  {
+    "isoDate": "2022-07-05",
+    "niceDate": "5 July 2022",
+    "diff": "HEAD",
+    "href": null,
+    "major": false,
+    "minor": false,
+    "tag": null,
+    "title": "Unreleased",
+    "date": "2022-07-05T15:17:25.111Z",
+    "summary": null,
+    "commits": [
+      {
+        "hash": "addbc6392868b2db21dc298034d058034c6dd4a2",
+        "shorthash": "addbc63",
+        "author": "Jason Becht",
+        "email": "jason@cryptechstudios.com",
+        "date": "2022-07-05T15:17:11.000Z",
+        "niceDate": "5 July 2022",
+        "subject": "chore",
+        "message": "chore\n\ncleaning up data and hbs template",
+        "fixes": null,
+        "href": "https://github.com/RWSDev/WonderPalette/commit/addbc6392868b2db21dc298034d058034c6dd4a2",
+        "breaking": false,
+        "files": 2,
+        "insertions": 44,
+        "deletions": 1,
+        "merge": null
+      },
+      {
+        "hash": "488e65596771c38e069d909c513a9f87212775fa",
+        "shorthash": "488e655",
+        "author": "Jason Becht",
+        "email": "jason@cryptechstudios.com",
+        "date": "2022-07-05T13:43:40.000Z",
+        "niceDate": "5 July 2022",
+        "subject": "chore: update versioning",
+        "message": "chore: update versioning",
+        "fixes": null,
+        "href": "https://github.com/RWSDev/WonderPalette/commit/488e65596771c38e069d909c513a9f87212775fa",
+        "breaking": false,
+        "files": 8,
+        "insertions": 27,
+        "deletions": 19,
+        "merge": null
+      },
+      {
+        "hash": "bfbb9874b23ffcb1c63c0c4623134aa883fbfceb",
+        "shorthash": "bfbb987",
+        "author": "Jason Becht",
+        "email": "jason@cryptechstudios.com",
+        "date": "2022-07-05T13:42:29.000Z",
+        "niceDate": "5 July 2022",
+        "subject": "fix: changelog setting was not limiting",
+        "message": "fix: changelog setting was not limiting",
+        "fixes": null,
+        "href": "https://github.com/RWSDev/WonderPalette/commit/bfbb9874b23ffcb1c63c0c4623134aa883fbfceb",
+        "breaking": false,
+        "files": 1,
+        "insertions": 1,
+        "deletions": 1,
+        "merge": null
+      }
+    ],
+    "merges": [],
+    "fixes": []
+  }
+]
