@@ -1,5 +1,27 @@
 # Changelog
+{{#each releases}}
+    ### [{{title}}]({{href}})
 
+    {{! List commits with `Breaking change: ` somewhere in the message }}
+    {{#commit-list commits heading='### Breaking Changes' message='Breaking change: '}}
+        - {{subject}} [`{{shorthash}}`]({{href}})
+    {{/commit-list}}
+
+    {{! List commits that add new features, but not those already listed above }}
+    {{#commit-list commits heading='### New Features' message='feat: ' exclude='Breaking change: '}}
+        - {{subject}} [`{{shorthash}}`]({{href}})
+    {{/commit-list}}
+
+    {{! List commits that are fixes, but not those already listed above }}
+    {{#commit-list commits heading='### Fixed' message='fix: ' exclude='Breaking change: '}}
+        - {{subject}} [`{{shorthash}}`]({{href}})
+    {{/commit-list}}
+
+    {{! List commits that add new features, but not those already listed above }}
+    {{#commit-list commits heading='### Maintenance' message='chore: ' exclude='Breaking change: '}}
+        - {{subject}} [`{{shorthash}}`]({{href}})
+    {{/commit-list}}
+{{/each}}
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
