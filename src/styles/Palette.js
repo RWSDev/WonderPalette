@@ -60,7 +60,7 @@ export const paletteStyles = StyleSheet.create({
         // top: 0,
         left: 0,
         right: 0,
-        bottom: -60,
+        bottom: -45,
         justifyContent: "center",
         alignItems: "center",
         flex: 0,
@@ -94,7 +94,7 @@ export const paletteStyles = StyleSheet.create({
         fontStyle: "italic",
     },
     colorDetailsContainer: {
-        marginTop: 10,
+        marginTop: 20,
         width: '100%',
         flex: 1,
         // paddingTop: 20,
@@ -102,7 +102,7 @@ export const paletteStyles = StyleSheet.create({
         justifyContent: 'space-evenly',
         alignSelf: "center",
         // height: "100%",
-        minHeight: 425,
+        minHeight: 600,
         maxHeight: 425,
     },
     colorDetailsLeft: {
@@ -112,6 +112,7 @@ export const paletteStyles = StyleSheet.create({
         width: '25%',
         alignItems: "center",
         justifyContent: "center",
+        alignSelf: 'center',
         flex: 1,
     },
     colorDetailRowText: {
@@ -124,10 +125,10 @@ export const paletteStyles = StyleSheet.create({
         transform: [{ rotate: "45deg" }],
         borderWidth: 1,
         borderColor: 'darkgray',
-        shadowColor: 'red',
-        shadowRadius: 20,
+        // shadowColor: 'red',
+        // shadowRadius: 20,
         borderRadius: 100,
-        elevation: 20,
+        // elevation: 20,
         marginTop: 20,
     },
     diamond: {
