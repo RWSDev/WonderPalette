@@ -16,6 +16,7 @@ const initialState = {
         shades: {},
     },
     bookHexColor: '#000000',
+    savedPalettes: [],
 }
 
 export const DataSlice = createSlice({
@@ -52,7 +53,7 @@ export const DataSlice = createSlice({
             const hexColor = action.payload.hexColor
             const section = action.payload.secName
             const colors = action.payload.colors
-            
+
             console.log('==================== hexColor ====================')
             console.log(hexColor)
             console.log('==================== section ====================')
@@ -151,11 +152,15 @@ export const DataSlice = createSlice({
         },
         setBookHexColor: (state, action) => {
             state.bookHexColor = action.payload
-        }
+        },
+        loadSavedPalettes: (state, action) => {
+            const savedPalettes = action.payload
+            state.savedPalettes = savedPalettes
+        },
     },
 })
 
 // Action creators are generated for each case reducer function
-export const { setPalette, setPickColor, setPaletteSection, setSectionColorNames, setBookHexColor } = DataSlice.actions
+export const { setPalette, setPickColor, setPaletteSection, setSectionColorNames, setBookHexColor, loadSavedPalettes } = DataSlice.actions
 
 export default DataSlice.reducer

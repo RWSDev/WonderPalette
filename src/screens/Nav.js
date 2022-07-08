@@ -11,9 +11,24 @@ import { menuStyles } from "../styles/Menu";
 import SettingsScreen from "./Settings";
 import PaletteScreen from "./Palette"
 import {navigationRef} from "../components/RootNavigation"
+import SavedPalettesScreen from "./SavedPalettes";
 
 // Root app pages
 const Tab = createBottomTabNavigator()
+const PaletteStack = createNativeStackNavigator()
+
+function PaletteStackScreen() {
+    return (
+        <PaletteStack.Navigator>
+            <PaletteStack.Screen name='PaletteScreen' component={PaletteScreen}
+                options={{
+                    headerShown: false,
+                }}
+            />
+            <PaletteStack.Screen name='Saved Palettes' component={SavedPalettesScreen} />
+        </PaletteStack.Navigator>
+    )
+}
 
 function TabStack() {
   return (
@@ -35,7 +50,7 @@ function TabStack() {
                   <Icon name='eye-dropper' color={color} size={size} />
               )
           }} />
-          <Tab.Screen name='Palette' component={PaletteScreen} options={{
+          <Tab.Screen name='Palette' component={PaletteStackScreen} options={{
               tabBarLabel: 'Palette',
               tabBarIcon: ({ color, size }) => (
                   <Icon name='palette' color={color} size={size} />

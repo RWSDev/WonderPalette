@@ -2,15 +2,15 @@ import React, {Fragment, useEffect, useState} from "react"
 import {ScrollView, Text, TouchableOpacity, View, Modal} from 'react-native'
 import { globalStyles } from "../styles/Global";
 import { paletteStyles} from "../styles/Palette";
-import { getTextColorFromColor, hexToRGB, hexToHsl } from "../components/Palette"
-import { useSelector, useDispatch } from 'react-redux'
-import {setPaletteSection, setPickColor, setSectionColorNames, setBookHexColor } from '../redux/DataSlice'
+import {getTextColorFromColor, hexToRGB, hexToHsl, processColor} from "../components/Palette"
+import { useSelector, useDispatch, batch } from 'react-redux'
+import {setPaletteSection, setPickColor, setSectionColorNames, setBookHexColor, setPalette} from '../redux/DataSlice'
 import * as RootNavigation from "../components/RootNavigation"
-import {Button, Card, Title} from "react-native-paper";
+import {Button, Card } from "react-native-paper";
 import { toHsv } from "react-native-color-picker";
 import Icon from 'react-native-vector-icons/FontAwesome5'
-import CardContent from "react-native-paper/src/components/Card/CardContent";
 import {getColorBooksForColorQuery, getColorNamesQuery} from "../components/SqliteDB";
+import {useIsFocused} from "@react-navigation/native";
 
 
 function PaletteScreen({ navigation }) {
@@ -18,12 +18,53 @@ function PaletteScreen({ navigation }) {
     const paletteSection = useSelector((state) => state.data.paletteSection)
     const sectionColorNames = useSelector((state) => state.data.sectionColorNames)
     const bookHexColor = useSelector((state) => state.data.bookHexColor)
-    const pickColor = useSelector((state) => state.data.pickColor)
     const dispatch = useDispatch()
     const [modalVisible, setModalVisible] = useState(false);
     const [bookModalVisible, setBookModalVisible] = useState(false);
     const [colorBooks, setColorBooks] = useState([])
-    const [colorNames, setColorNames] = useState(null)
+    const initialColor = '#0000ff'
+
+    const procColor = async (color) => {
+        if (color.length === 7) {
+            const colorData = processColor(color);
+            await dispatch(setPalette(colorData));
+        }
+    }
+    useEffect(() => {
+        procColor(initialColor)
+    },[])
+
+    useEffect(() => {
+        getColorNames()
+    },[palette])
+
+    const getColorNames = () => {
+        console.log('==================== palette ====================')
+        console.log(palette)
+        const { primary, hsl, hex, rgb, ...cleanData } = palette
+        console.log('==================== cleanData ====================')
+        console.log(cleanData)
+        Object.keys(cleanData).map((section, index) => {
+            Object.keys(cleanData[section]).map(idx => {
+                (async () => {
+                    try {
+                        let clrNames = []
+                        clrNames = await getColorNamesQuery(cleanData[section][idx])
+                        if (clrNames !== null) {
+                            await dispatch(setSectionColorNames({
+                                secName: section,
+                                hexColor: cleanData[section][idx],
+                                colors: clrNames
+                            }))
+                        }
+                    } catch (e) {
+                        console.log('======== error ==========')
+                        console.log(e)
+                    }
+                })();
+            })
+        })
+    }
 
     const roundHSV = (color) => {
         const hsv = toHsv(color)
@@ -35,35 +76,6 @@ function PaletteScreen({ navigation }) {
         })
         return hsvValues.join(',')
     }
-
-    const getColorNames = () => {
-        console.log('==================== palette ====================')
-        console.log(palette)
-        const { primary, hsl, hex, rgb, ...cleanData } = palette
-        console.log('==================== cleanData ====================')
-        console.log(cleanData)
-        Object.keys(cleanData).map((section, index) => {
-            Object.keys(cleanData[section]).map(idx => {
-                useEffect(() => {
-                    (async () => {
-                        try {
-                            let clrNames = []
-                            clrNames = await getColorNamesQuery(cleanData[section][idx])
-                            if (clrNames !== null) {
-                                await dispatch(setSectionColorNames({secName: section, hexColor: cleanData[section][idx], colors: clrNames }))
-                            }
-                            await console.log('==================== section color names ====================')
-                            await console.log(sectionColorNames)
-                        } catch (e) {
-                            console.log('======== error ==========')
-                            console.log(e)
-                        }
-                    })();
-                },[navigation.isFocused()])
-            })
-        })
-    }
-    getColorNames()
 
     const bookButtonPressed = async (hexColor) => {
         await setColorBooks( await getColorBooksForColorQuery(hexColor) )

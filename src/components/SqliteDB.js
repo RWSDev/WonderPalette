@@ -63,3 +63,23 @@ export const getColorBooksForColorQuery = async (hexColor) => {
     }
 }
 
+export const getPalettes = async () => {
+    let selectQuery = await ExecuteQuery('select id, name, color from palettes')
+    let rows = selectQuery.rows
+    if (rows.length > 0) {
+        let savedPaletteArray = []
+        for (let i = 0; i < rows.length; i++) {
+            var item = rows.item(i);
+            savedPaletteArray.push({[item.name]: item.color})
+        }
+        return savedPaletteArray
+    } else {
+        return null
+    }
+}
+
+export const savePalette = async (name, color) => {
+    let insertQuery = await ExecuteQuery(`insert into palettes (name, color) values ( ?, ? ), [${name}, ${color}]`)
+    console.log(insertQuery)
+}
+
