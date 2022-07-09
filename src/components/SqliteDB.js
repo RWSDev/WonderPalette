@@ -70,7 +70,7 @@ export const getPalettes = async () => {
         let savedPaletteArray = []
         for (let i = 0; i < rows.length; i++) {
             var item = rows.item(i);
-            savedPaletteArray.push({[item.name]: item.color})
+            savedPaletteArray.push({name: [item.name], color: item.color, id: item.id})
         }
         return savedPaletteArray
     } else {
@@ -79,7 +79,17 @@ export const getPalettes = async () => {
 }
 
 export const savePalette = async (name, color) => {
-    let insertQuery = await ExecuteQuery(`insert into palettes (name, color) values ( ?, ? ), [${name}, ${color}]`)
-    console.log(insertQuery)
+    console.log('insertion!!!!!!!')
+    try {
+        await ExecuteQuery('insert into palettes (name, color) values ( ?, ? )',[name, color])
+        return 'success'
+    } catch (e) {
+        console.log('e in query: ')
+        console.log(e)
+        return 'failed'
+    }
 }
 
+export const deletePalette = async(id) => {
+    let deleteQuery = await ExecuteQuery('delete from palettes where id = ?',[id])
+}

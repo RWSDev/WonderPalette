@@ -62,6 +62,17 @@ export const globalStyles = StyleSheet.create({
     fontSize: 10,
     color: 'white',
     textTransform: "capitalize",
+  },
+  aboutLogo: {
+    aspectRatio: 1,
+    width: '100%',
+    height: undefined,
+  },
+  disclaimer: {
+    color: 'white',
+    textAlign: "center",
+    fontSize: 12,
+    marginTop: 50,
   }
 
 })

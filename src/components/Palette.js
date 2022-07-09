@@ -45,7 +45,7 @@ import React from 'react'
             b = "0x" + color[5] + color[6];
         }
 
-        return `${+r}, ${+g}, ${+b}`
+        return `${+r},${+g},${+b}`
         // return "rgb("+ +r + "," + +g + "," + +b + ")";
     }
 
@@ -134,7 +134,7 @@ import React from 'react'
         s = +(s * 100).toFixed(1);
         l = +(l * 100).toFixed(1);
 
-        return `${h}, ${s}, ${l}`
+        return `${h},${s},${l}`
         // this.state.hsl = {h: h, s: s, l: l}
     }
 

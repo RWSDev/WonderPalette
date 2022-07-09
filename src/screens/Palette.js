@@ -10,7 +10,6 @@ import {Button, Card } from "react-native-paper";
 import { toHsv } from "react-native-color-picker";
 import Icon from 'react-native-vector-icons/FontAwesome5'
 import {getColorBooksForColorQuery, getColorNamesQuery} from "../components/SqliteDB";
-import {useIsFocused} from "@react-navigation/native";
 
 
 function PaletteScreen({ navigation }) {
@@ -89,7 +88,7 @@ function PaletteScreen({ navigation }) {
         if (colors) {
             colors = [...new Set(colors)]
         }
-        const tmphsl = hexToHsl(hexColor).split(', ')
+        const tmphsl = hexToHsl(hexColor).split(',')
         const hsl = {
             h: parseInt(tmphsl[0]),
             s: parseInt(tmphsl[1]),
@@ -127,9 +126,6 @@ function PaletteScreen({ navigation }) {
                     <Card.Title
                         titleStyle={paletteStyles.titleText}
                         title={bookHexColor}
-                        subtitle={`Conversion information for ${paletteSection} palette associated with your primary selected color`}
-                        subtitleStyle={paletteStyles.subtitle}
-                        subtitleNumberOfLines={2}
                     />
                     <Card.Content>
                         <View style={{ flex: 1, width: '100%'}}>
@@ -227,17 +223,17 @@ function PaletteScreen({ navigation }) {
                                                     </View>
                                                     { joinColorsForText(sectionColorNames[paletteSection][hexColor], hexColor) }
                                                 </TouchableOpacity>
-                                                <View key={100 + index} style={paletteStyles.colorDetailRowSection}>
-                                                    <Text style={paletteStyles.colorDetailRowText}>HEX{'\n'} {hexColor}</Text>
+                                                <View key={100 + index} style={[paletteStyles.colorDetailRowSection, { borderEndColor: 'darkgray', borderEndWidth: 0.25}]}>
+                                                    <Text style={paletteStyles.colorDetailRowText}><Text style={{fontWeight: 'bold'}}>HEX</Text>{'\n'} {hexColor}</Text>
                                                 </View>
-                                                <View key={200 + index} style={paletteStyles.colorDetailRowSection}>
-                                                    <Text style={paletteStyles.colorDetailRowText}>RGB{'\n'} {hexToRGB(hexColor)}</Text>
+                                                <View key={200 + index} style={[paletteStyles.colorDetailRowSection, { borderEndColor: 'darkgray', borderEndWidth: 0.25}]}>
+                                                    <Text style={paletteStyles.colorDetailRowText}><Text style={{fontWeight: 'bold'}}>RGB</Text>{'\n'} {hexToRGB(hexColor)}</Text>
                                                 </View>
-                                                <View key={300 + index} style={paletteStyles.colorDetailRowSection}>
-                                                    <Text style={paletteStyles.colorDetailRowText}>HSL{'\n'} {hexToHsl(hexColor)}</Text>
+                                                <View key={300 + index} style={[paletteStyles.colorDetailRowSection, { borderEndColor: 'darkgray', borderEndWidth: 0.25}]}>
+                                                    <Text style={paletteStyles.colorDetailRowText}><Text style={{fontWeight: 'bold'}}>HSL</Text>{'\n'} {hexToHsl(hexColor)}</Text>
                                                 </View>
-                                                <View key={400 + index} style={paletteStyles.colorDetailRowSection}>
-                                                    <Text style={paletteStyles.colorDetailRowText}>HSV{'\n'} {roundHSV(hexColor)}</Text>
+                                                <View key={400 + index} style={[paletteStyles.colorDetailRowSection, { borderEndColor: 'darkgray', borderEndWidth: 0.25}]}>
+                                                    <Text style={paletteStyles.colorDetailRowText}><Text style={{fontWeight: 'bold'}}>HSV</Text>{'\n'} {roundHSV(hexColor)}</Text>
                                                 </View>
                                             </View>
                                         )

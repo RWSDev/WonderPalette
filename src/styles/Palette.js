@@ -82,6 +82,64 @@ export const paletteStyles = StyleSheet.create({
         textAlign: "center",
         fontStyle: "italic",
     },
+    saveCard: {
+        borderWidth: 1,
+        borderColor: 'black',
+        flex: 0,
+        backgroundColor: 'white',
+        justifyContent: 'center',
+        // alignItems: 'center',
+        maxHeight: 125,
+        minWidth: "75%",
+        marginVertical: 350,
+        alignSelf: 'center',
+        ...Platform.select({
+            ios: {
+                shadowColor: 'black',
+                shadowOffset: {width: 5, height: 10},
+                shadowOpacity: 0.6,
+                shadowRadius: 3,
+            },
+            android: {
+                elevation: 20,
+                shadowColor: 'black'
+            }
+        })
+    },
+    saveCardTitleText: {
+        textAlign: "center",
+        fontSize: 12,
+        fontWeight: "bold",
+        minWidth: "100%",
+        // textTransform: "capitalize",
+    },
+    saveCardActionsContainer: {
+        position: "absolute",
+        // top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        justifyContent: "center",
+        alignItems: "center",
+        flex: 0,
+    },
+    saveCardActionButton: {
+        borderRadius: 10,
+        borderWidth: 1,
+        borderColor: 'white',
+        width: 75,
+        marginHorizontal: 25,
+        justifyContent: 'space-between',
+        backgroundColor: '#005a81',
+        maxHeight: 32,
+    },
+    promptInput: {
+        borderWidth: 1,
+        borderColor: "darkgray",
+        borderRadius: 3,
+        width: '75%',
+        alignSelf: "center",
+    },
     legend: {
         paddingTop: 3,
         color: 'gray',
@@ -94,14 +152,12 @@ export const paletteStyles = StyleSheet.create({
         fontStyle: "italic",
     },
     colorDetailsContainer: {
-        marginTop: 20,
+        marginTop: 0,
         width: '100%',
         flex: 1,
-        // paddingTop: 20,
         flexDirection: 'column',
         justifyContent: 'space-evenly',
         alignSelf: "center",
-        // height: "100%",
         minHeight: 600,
         maxHeight: 425,
     },
@@ -109,15 +165,18 @@ export const paletteStyles = StyleSheet.create({
 
     },
     colorDetailRowSection: {
-        width: '25%',
+        // width: '25%',
         alignItems: "center",
         justifyContent: "center",
         alignSelf: 'center',
         flex: 1,
+        // borderEndColor: 'blue',
+        // borderEndWidth: 0.25,
     },
     colorDetailRowText: {
         textAlign: "center",
-        fontSize: 8,
+        fontSize: 10,
+        fontWeight: 'bold',
     },
     circle: {
         width: 50,
