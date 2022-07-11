@@ -1,5 +1,12 @@
 import React from "react";
 import { Platform, StyleSheet } from "react-native";
+import { Dimensions } from 'react-native';
+
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
+const aspectRatio = windowHeight/windowWidth
+const devWidthOffset = (aspectRatio > 1.6)? 100 : 200
+const devHeightOffset = (aspectRatio > 1.6)? 225 : 350
 
 export const paletteStyles = StyleSheet.create({
     titleContainer: {
@@ -77,7 +84,7 @@ export const paletteStyles = StyleSheet.create({
         paddingTop: 3,
         color: '#005a81',
         fontSize: 10,
-        width: '75%',
+        width: windowWidth - devWidthOffset,
         alignSelf: "center",
         textAlign: "center",
         fontStyle: "italic",
@@ -86,12 +93,12 @@ export const paletteStyles = StyleSheet.create({
         borderWidth: 1,
         borderColor: 'black',
         flex: 0,
+        margin: 'auto',
         backgroundColor: 'white',
         justifyContent: 'center',
-        // alignItems: 'center',
         maxHeight: 125,
         minWidth: "75%",
-        marginVertical: 350,
+        // marginVertical: 350,
         alignSelf: 'center',
         ...Platform.select({
             ios: {
@@ -152,24 +159,27 @@ export const paletteStyles = StyleSheet.create({
         fontStyle: "italic",
     },
     colorDetailsContainer: {
-        marginTop: 0,
+        marginTop: 5,
         width: '100%',
         flex: 1,
         flexDirection: 'column',
         justifyContent: 'space-evenly',
         alignSelf: "center",
-        minHeight: 600,
-        maxHeight: 425,
+        minHeight: windowHeight - devHeightOffset,
+        // minHeight: windowHeight - 225,
+        // minHeight: 475,
+        // maxHeight: 600,
     },
     colorDetailsLeft: {
 
     },
     colorDetailRowSection: {
-        // width: '25%',
+        width: '25%',
         alignItems: "center",
         justifyContent: "center",
         alignSelf: 'center',
         flex: 1,
+        // height: 50,
         // borderEndColor: 'blue',
         // borderEndWidth: 0.25,
     },

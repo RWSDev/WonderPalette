@@ -192,7 +192,7 @@ function PaletteScreen({ navigation }) {
                             subtitle={
                                 <View>
                                     <Text style={paletteStyles.subtitle}>Conversion information for {paletteSection} palette based on your selected color</Text>
-                                    <View style={{borderBottomColor: 'gray', borderBottomWidth: 1, paddingTop: 2}}></View>
+                                    <View style={{borderBottomColor: 'gray', borderBottomWidth: 1, paddingTop: 2, width: '100%'}}></View>
                                     <Text style={paletteStyles.legend}><Icon name={'paint-roller'} size={12} />
                                         : Click to see brands and names for color
                                     </Text>

@@ -96,7 +96,7 @@ const TopMenu = () => {
                       alert('closed')
                       setPromptVisible(!promptVisible)
                   }}>
-                  {/*<View style={{flex: 1, backgroundColor: 'purple', justifyContent: 'center', alignItems: 'center', maxHeight: '50%', minWidth: "75%", marginVertical: 250, alignSelf: 'center'}}>*/}
+                  <View style={{flex: 1, backgroundColor: 'transparent', justifyContent: 'center', alignItems: 'center', maxHeight: '50%', minWidth: "75%", marginVertical: 250, alignSelf: 'center'}}>
                       <Card style={paletteStyles.saveCard}>
                           <Card.Title
                               titleStyle={paletteStyles.saveCardTitleText}
@@ -126,8 +126,7 @@ const TopMenu = () => {
                               </Button>
                           </Card.Actions>
                       </Card>
-
-                  {/*</View>*/}
+                  </View>
               </Modal>
       )
   }

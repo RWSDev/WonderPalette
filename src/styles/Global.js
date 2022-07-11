@@ -64,8 +64,11 @@ export const globalStyles = StyleSheet.create({
     textTransform: "capitalize",
   },
   aboutLogo: {
+    flex: 0,
+    marginTop: 25,
     aspectRatio: 1,
-    width: '100%',
+    width: '80%',
+    alignSelf: "center",
     height: undefined,
   },
   disclaimer: {
